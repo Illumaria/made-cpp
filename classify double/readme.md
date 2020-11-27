@@ -1,10 +1,4 @@
-# Задача 1: classify double
+# Problem 1: classify double
 
-### Условие:
-Необходимо написать checker-ы для функции classify (double num) {...}, которая занимается классифицированием чисел типа double. Можно почитать [эту](https://steve.hollasch.net/cgindex/coding/ieeefloat.html) статью которую мы разбирали на семинаре. Также на youtube я [выложил](https://youtu.be/SoacNd8tV9I) видео с комментариями по задаче.
-
-##### Стоимость:
-Задача стоит 3 балла.
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 22 Сентября 2020 года не принимаются.
+### Problem statement:
+We need to create checkers for the function `classify (double num) {...}` that classifies `double` numbers. [This](https://steve.hollasch.net/cgindex/coding/ieeefloat.html) article might come in handy.
