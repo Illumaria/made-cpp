@@ -1,26 +1,15 @@
-# Проект 1: vector operations
+# Project 1: vector operations
 
-### Условие:
-Требуется реализовать функции, работающие с `std::vector<double>` и `std::vector<int>`:
-
-- `std::vector<double>`
-  - Бинарные и унарные операторы `+` и `-`, работающие как для математических векторов
-  - Скалярное произведение оператором `*`
-  - Векторное произведение оператором `%`
-  - Оператор `||`, проверяющий коллинеарность
-  - Оператор `&&`, проверяющий сонаправленность
-  - Оператор потокового ввода `>>`, принимающий первым числом размер, далее значения
-  - Оператор потокового вывода `<<`, выводящий все значения вектора через пробел, заканчивая символом переноса строки
-  - Функция `reverse`, переставляющая элементы вектора в обратном порядке
-- `std::vector<int>`
-  - Операторы `|` и `&`, поэлементно применяющие соответствующие битовые операции
-
-
-##### Стоимость:
-Задача стоит 7 баллов
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 6 Октября 2020 года не принимаются.
-
-##### Трудности с запуском тестов?
-Запускать надо с установленным g++, командой run.sh (обычный sh-скрипт). Если что-то не выходит – пишите в tg: @konstantinleladze
+### Problem statement:
+Implement the following functions for `std::vector<double>` and `std::vector<int>` as algebraic vectors:
+- `std::vector<double>`:
+  - unary and binary operators `+` and `-`;
+  - `*` dot product operator;
+  - `%` cross product operator;
+  - `||` operator for collinearity check;
+  - `&&` operator for co-directionality check;
+  - `operator>>` that takes size as its first argument, then values;
+  - `operator<<` that prints all vector values separated by whitespace and ends with a line break;
+  - `reverse` function that puts vector elements in reversed order;
+- `std::vector<int>`:
+  - `|` and `&` operators that apply corresponding bitwise operations.
