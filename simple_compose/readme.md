@@ -1,10 +1,12 @@
-# Задача 3: simple compose
+# Problem 3: simple compose
 
-### Условие:
-Необходимо написать функцию, которая считает композицию функций. На вход она получает 2 аргумента - количество функций и сами функции в массиве. Функцию compose можно сделать рекурсивной. Если n = 0, то возвращать нужно идемпотентную функцию, если n = 1, то можно вернуть саму функцию. В файле main.cpp написаны примитивные тестики. Также в main.cpp можно посмотреть на то, как инстанцировать операции (op1), и как создавать creater-ы этих самых операций (op2). Если кто знаком с библиотекой redux, то можно провести аналогию с action-ами и action creater-ами. PS: запрещено создавать дополнительные вспомогательные функции вне кода функции compose, мотивировка: compose – библиотечная функция, а чем меньше зависимостей у библиотечных компонент, тем проще ее расширять и читать.
+### Problem statement:
+Write a function to calculate function composition. It must take 2 arguments: number of functions and the functions themselves.
 
-##### Стоимость:
-Задача стоит 3 балла.
+`compose` function may be recursive.
 
-##### Срок сдачи:
-Решения сданные позже 23:59:59 6 Октября 2020 года не принимаются.
+If `n = 0`, the function should return some idempotent function. If `n = 1`, it should return its only argument.
+
+`main.cpp` contains some simple tests. It can be used to get the idea on how to instantiate operations (op1) and how to make these operations creators (op2).
+
+It is forbidden to create any auxiliary functions outside of the `compose` function. `compose` should be considered a library function, and the fewer dependencies a library has, the easier it is to read, maintain, and extend it.
