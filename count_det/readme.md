@@ -1,10 +1,4 @@
-# Задача 2: count det
+# Problem 2: count det
 
-### Условие:
-Необходимо написать функцию, которая считает детерминант матрицы 3x3 состоящей из int32_t на arm-ассемблере.
-
-##### Стоимость:
-Задача стоит 3 балла.
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 29 Сентября 2020 года не принимаются.
+### Problem statement:
+We need to write a function that calculates determinant of a 3×3 matrix containing `int32_t` numbers on `arm`-assembler.
