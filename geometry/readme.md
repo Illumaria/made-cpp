@@ -1,75 +1,58 @@
-# Проект 2: geometry
+# Project 2: geometry
 
-### Условие:
-Напишите иерархию классов для работы с геометрическими фигурами на плоскости:
-- Структура `Point` - точка на плоскости. Точку можно задать двумя числами типа
-`double`. Должны быть открыты поля `x` и `y`. Точки можно сравнивать операторами
-`==` и `!=`.
+### Problem statement:
+Implement the following class hierarchy for geometry shapes on a plane:
+- Struct `Point`: a point on a plane. It can be set with two numbers of `double` type. The struct must have `x` and `y` fields and support `==` and `!=` operators.
 
-- Класс `Line` - прямая. Прямую можно задать двумя точками, можно двумя числами
-(угловой коэффициент и сдвиг), можно точкой и числом (угловой коэффициент).
-Линии можно сравнивать операторами `==` и `!=`.
+- Class `Line`: a straight line on a plane. It can be set with two Points, with two numbers — an angular coefficient and an offset, or with a Point and a number (an angular coefficient). Lines must support comparison with `==` and `!=` operators.
 
-- Абстрактный класс `Shape` - фигура.
+- Abstract class `Shape`: a figure.
 
-- Класс `Polygon` - многоугольник. Многоугольник - частный случай фигуры. У
-многоугольника можно спросить `verticesCount()` - количество вершин - и
-`std::vector<Point> getVertices` - сами вершины без возможности изменения. Можно сконструировать многоугольник из
-вектора точек-вершин в порядке обхода. Для простоты будем считать, что многоугольники с
-самопересечениями никогда не возникают (гарантируется, что в тестах таковые
-будут отсутствовать).
+- Class `Polygon`: a polygon. This is a special case of a `Shape`. A `Polygon` must support the following methods:
+  - `verticesCount()`: returns the number of vertices;
+  - `std::vector<Point> getVertices`: returns the vertices of the `Polygon`.
 
-- Класс `Ellipse` - эллипс. Эллипс - частный случай фигуры. У эллипса можно спросить
-`std::pair<Point,Point> focuses()` - его фокусы; `double eccentricity()` - его эксцентриситет, `Point center()` - его центр.
-Эллипс можно сконструировать из двух точек и `double` (два фокуса и сумма расстояний от эллипса до них);
+A `Polygon` can be constructed from a vector of `Point`s in the order of traverse. We'll assume that polygons with self-intersections do not occur.
 
-- Класс `Circle` - круг. Круг - частный случай эллипса. У круга можно спросить `double
-radius()` - радиус. Круг можно задать точкой и числом (центр и радиус).
+- Class `Ellipse`: an ellipse. This is a special case of a `Shape`. An `Ellipse` must support the following methods:
+  - `std::pair<Point,Point> focuses()`: returns the focuses of an ellipse;
+  - `double eccentricity()`: returns the eccentricity of an ellipse;
+  - `Point center()`: returns the center of an ellipse.
 
-- Класс `Rectangle` - прямоугольник. Прямоугольник - частный случай
-многоугольника. У прямоугольника можно спросить `Point center()` - его центр;
-`std::pair<Line, Line> diagonals()` - пару его диагоналей. Прямоугольник можно
-сконструировать по двум точкам (его противоположным вершинам) и числу
-(отношению смежных сторон), причем из двух таких прямоугольников
-выбирается тот, у которого более короткая сторона расположена по левую сторону
-от диагонали, если смотреть от первой заданной точки в направлении второй.
+An `Ellipse` can be constructed from two `Point`s (focuses) and a `double` number (the sum of distances from any ellipse point to the focuses).
 
-- Класс `Square` - квадрат. Квадрат - частный случай прямоугольника. У квадрата
-можно спросить `Circle circumscribedCircle()`, `Circle inscribedCircle()`. Квадрат можно
-задать двумя точками - противоположными вершинами.
+- Class `Circle`: a circle. This is a special case of an `Ellipse`. A `Circle` must support the following methods:
+  - `double radius()`: returns the radius of an ellipse.
 
-- Класс `Triangle` - треугольник. Треугольник - частный случай многоугольника. 
-У треугольника можно спросить `Circle circumscribedCircle()`, `Circle inscribedCircle()`,
-`Point centroid()` - его центр масс, `Point orthocenter()` - его ортоцентр, `Line EulerLine()` - 
-его прямую Эйлера, `Circle ninePointsCircle()` - его окружность Эйлера.
+A `Circle` can be constructed with a `Point` (center) and a number (radius).
 
+- Class `Rectangle`: a rectangle. This is a special case of a `Polygon`. A `Polygon` must support the following methods:
+  - `Point center()`: returns the center of a rectangle;
+  - `std::pair<Line, Line> diagonals()`: returns the pair of a rectangle disgonals.
 
+A `Rectangle` can be constructed with two `Points` (its opposite vertices) and a number (the ratio of adjacent sides of a rectangle). From the two suitable rectangles we choose the one with the shorter side located on the left side of the diagonal if we look from the first specified point in the direction of the second.
 
-У любой фигуры можно спросить:
+- Class `Square`: a square. This is a special case of a `Rectangle`. A `Square` must support the following methods:
+  - `Circle circumscribedCircle()`;
+  - `Circle inscribedCircle()`.
 
-- `double perimeter()` - периметр;
+A `Square` can be constructed with two `Point`s (its opposite vertices).
 
-- `double area()` - площадь;
+- Class `Triangle`: a triangle. This is a special case of a `Polygon`. A `Triangle` must support the following methods:
+  - `Circle circumscribedCircle()`;
+  - `Circle inscribedCircle()`;
+  - `Point centroid()`: the center of mass of a triangle;
+  - `Point orthocenter()`: the orthocenter of a triangle;
+  - `Line EulerLine()`: the Euler line of a triangle;
+  - `Circle ninePointsCircle()`: the Euler's circle of a triangle.
 
-- `operator==(const Shape& another)` - совпадает ли эта фигура с другой;
+Every figure must support the following methods:
+- `double perimeter()`: the perimeter of a figure;
+- `double area()`: the area of a figure;
+- `operator==(const Shape& another)`: check if the figure matches `another` figure.
 
-
-С любой фигурой можно сделать:
-
-- `rotate(Point center, double angle)` - поворот на угол (в градусах, против часовой
-стрелки) относительно точки;
-
-- `reflex(Point center)` - симметрию относительно точки;
-
-- `reflex(Line axis)` - симметрию относительно прямой;
-
-- `scale(Point center, double coefficient)` - гомотетию с коэффициентом `coefficient` и
-центром `center`.
-
-
-
-##### Стоимость:
-Задача стоит 9 баллов.
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 20 Октября 2020 года не принимаются.
+Every figure must support the following transformations:
+- `rotate(Point center, double angle)`: rotate by the `angle` (in degrees, counter clockwise) relative to the `center`;
+- `reflex(Point center)`: symmetry relative to the `center`;
+- `reflex(Line axis)`: symmetry relative to the `axis`;
+- `scale(Point center, double coefficient)`: homothety with the specified `coefficient` and the `center`.
