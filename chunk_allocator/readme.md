@@ -1,4 +1,4 @@
-# Problem 5: chuck_allocator
+# Problem 5: chunk_allocator
 
 ### Problem statement:
 We need to implement a custom allocator whose interface is similar to the interface of the `std::allocator`.
