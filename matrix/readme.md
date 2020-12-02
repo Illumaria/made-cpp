@@ -1,40 +1,26 @@
-# Задача 4: matrix
+# Problem 4: matrix
 
-### Условие:
-Требуется реализовать класс матриц над вещественными числами двойной точности.
+### Problem statement:
+Implement class `Matrix` of `double` type numbers. The class must support the following methods:
+- default constructor of an identity matrix of size `1×1`;
+- default constructor of an identity matrix of a given size:
+  - a non-square matrix should be initialized with ones on the main diagonal, zeros otherwise;
+- copy constructor;
+- copy assign operator;
+- `get` and `set` methods:
+  - should throw `OutOfBoundsException` in case of bad adressing;
+- `resize` method:
+  - new values should be initialized with zeros;
+- `operator[]` for both dimensions, and also for constant matrices;
+- `operator+`, `operator-`, `operator*` for scalar and `Matrix` arguments, composite assignment, unary plus and minus operators;
+- `operator==` and `operator!=`;
+- `det`, `transpose`,`transposed`, `trace` methods;
+- `getRow` and `getColumn` methods: return given row/column of type `std::vector`;
+- `operator<<`, `operator>>`:
+  - `operator>>` takes size as its first argument, values after.
 
-- Конструктор по-умолчанию, создающий единичную матрицу размера `1 x 1`
-- Конструктор единичной матрицы заданного размера
-  - Неквадратную матрицу инициализировать единицами на главной диагонали, нулями иначе
-- Конструктор копирования
-- Оператор присваивания
-- Методы `get` и `set`
-  - В случае обращения за границы матрицы необходимо бросать `OutOfBoundsException`
-- Метод `resize`, изменяющий размер матрицы
-  - В случае добавления новых значений, они должны инициализироваться нулями
-- Оператор `[]`, который должно быть можно применить дважды, в том числе и для константных матриц
-- Операторы сложения, вычитания, умножения на скаляр и матрицу, составного присваивания; унарный плюс и минус
-- Операторы сравнения матриц на равенство
-- Методы `det`, `transpose` и `transposed`, `trace`, 
-выполняющие соответствуюищие математические операции над матрицей
-- Методы `getRow` и `getColumn`, возвращающие заданную строчку или столбец матрицы в виде `std::vector`
-- Операторы потокового ввода и вывода
-  - На ввод сначала подается размер матрицы, потом значения
+All arithmetic operations, as well as `det` and `trace` methods, must throw `SizeMismatchException` in case of matrix sizes mismatch.
 
+Standard containers are forbidden to use for `Matrix` internal storage.
 
-В арифметических операциях, а также `det` и `trace`, при невозможности выполнить
-операцию из-за несовпадения размеров матриц, требуется бросать `SizeMismatchException`
-
-Шаблон решения со всеми требуемыми определениями уже написан.
-
-Для внутреннего хранения матрицы запрещается использовать стандартные контейнеры.
-
-При сравнении вещественных чисел используйте предоставленную константу `EPS`.
-
-
-##### Стоимость:
-Задача стоит 6 баллов.
-
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 13 Октября 2020 года не принимаются.
+When comparing real numbers, use the provided `EPS` constant.
