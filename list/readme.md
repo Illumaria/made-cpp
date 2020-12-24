@@ -1,14 +1,6 @@
-# Проект 3: list
+# Project 3: list
 
-### Условие:
-Необходимо реализовать аналог класса `std::list`. Набор требуемых методов
-описан в заголовочном файле решения. Поведение методов такое же, как у [`std::list`](https://en.cppreference.com/w/cpp/container/list).
-Работа с памятью должна происходить через передаваемый аллокатор.
+### Problem statement:
+Implement analogue of the `std::list` class. The required methods are listed in the header file, they must behave the same way as [`std::list`](https://en.cppreference.com/w/cpp/container/list) methods do.
 
-
-
-##### Стоимость:
-Задача стоит 12 баллов.
-
-##### Срок сдачи:
-Решения сданные позже 23:59:59 10 Ноября 2020 года не принимаются.
+Any work with memory must be done via the allocator passed as an argument.
