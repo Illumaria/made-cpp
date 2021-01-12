@@ -1,45 +1,29 @@
-#include <iostream>
 #include <functional>
+#include <iostream>
 
+typedef std::function<int(int)> Op;
 
-typedef std::function<int (int)> Op;
-
-
-Op compose (size_t n, Op ops[]) {
+Op compose(size_t n, Op ops[]) {
   // Idempotent function:
-  Op result = [] (int x) -> int { return x; };
-  if (n == 0)
-    return result;
+  Op result = [](int x) -> int { return x; };
+  if (n == 0) return result;
 
   // A function to chain ops functions:
-  auto func =
-    [] (Op prev, size_t i, Op ops[]) -> Op {
-      return [prev, i, ops] (int x) -> int {
-        return ops[i](prev(x));
-      };
-    };
+  auto func = [](Op prev, size_t i, Op ops[]) -> Op {
+    return [prev, i, ops](int x) -> int { return ops[i](prev(x)); };
+  };
 
-  for (ssize_t i = n - 1; i >= 0; --i)
-    result = func(result, i, ops);
+  for (ssize_t i = n - 1; i >= 0; --i) result = func(result, i, ops);
 
   return result;
 }
 
-
-int main () {
+int main() {
   /// Simple tests:
 
-  Op op1 =
-    [] (int x) -> int {
-      return x + 1;
-    };
+  Op op1 = [](int x) -> int { return x + 1; };
 
-  auto op2 =
-    [] (int p) -> Op {
-      return [p] (int x) {
-        return p * x;
-      };
-    };
+  auto op2 = [](int p) -> Op { return [p](int x) { return p * x; }; };
 
   {
     Op ops[4] = {op1, op2(2), op1, op2(2)};

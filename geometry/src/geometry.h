@@ -118,8 +118,8 @@ class Polygon : public Shape {
     for (size_t i = 1; i < verticles_num; ++i)
       result += sqrt(pow(verticles[i].x - verticles[i - 1].x, 2) +
                      pow(verticles[i].y - verticles[i - 1].y, 2));
-      result += sqrt(pow(verticles[0].x - verticles[verticles_num - 1].x, 2) +
-                     pow(verticles[0].y - verticles[verticles_num - 1].y, 2));
+    result += sqrt(pow(verticles[0].x - verticles[verticles_num - 1].x, 2) +
+                   pow(verticles[0].y - verticles[verticles_num - 1].y, 2));
 
     return result;
   }
